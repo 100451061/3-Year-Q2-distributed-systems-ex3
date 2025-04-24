@@ -38,27 +38,27 @@ clavesrpc_1(char *host)
 #endif	/* DEBUG */
 
 	//!Hay que modificar esto
-	retval_1 = destroy_1(&result_1, clnt);
+	retval_1 = rpc_destroy_1(&result_1, clnt);
 	if (retval_1 != RPC_SUCCESS) {
 		clnt_perror (clnt, "call failed");
 	}
-	retval_2 = set_value_1(set_value_1_a1, &result_2, clnt);
+	retval_2 = rpc_set_value_1(set_value_1_a1, &result_2, clnt);
 	if (retval_2 != RPC_SUCCESS) {
 		clnt_perror (clnt, "call failed");
 	}
-	retval_3 = get_value_1(get_value_1_key, &result_3, clnt);
+	retval_3 = rpc_get_value_1(get_value_1_key, &result_3, clnt);
 	if (retval_3 != RPC_SUCCESS) {
 		clnt_perror (clnt, "call failed");
 	}
-	retval_4 = modify_value_1(modify_value_1_a2, &result_4, clnt);
+	retval_4 = rpc_modify_value_1(modify_value_1_a2, &result_4, clnt);
 	if (retval_4 != RPC_SUCCESS) {
 		clnt_perror (clnt, "call failed");
 	}
-	retval_5 = delete_key_1(delete_key_1_key, &result_5, clnt);
+	retval_5 = rpc_delete_key_1(delete_key_1_key, &result_5, clnt);
 	if (retval_5 != RPC_SUCCESS) {
 		clnt_perror (clnt, "call failed");
 	}
-	retval_6 = exist_1(exist_1_key, &result_6, clnt);
+	retval_6 = rpc_exist_1(exist_1_key, &result_6, clnt);
 	if (retval_6 != RPC_SUCCESS) {
 		clnt_perror (clnt, "call failed");
 	}
