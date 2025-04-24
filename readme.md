@@ -2,7 +2,7 @@
 make -f Makefile.claves_rpc
 
 ## Para limpiar el makefile
-make -f Makefile.claves_rpc clean
+make clean -f Makefile.claves_rpc
 
 
 ## para que rpc genere funciones mas modernas y claras (con el flag -C, importante)

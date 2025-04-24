@@ -24,7 +24,7 @@ void clavesrpc_1(char *host)
     }
 
     // =============== DESTROY ===============
-    result_1 = rpc_destroy_1(clnt);
+    result_1 = rpc_destroy_1(NULL, clnt);
     if (result_1 == NULL) {
         clnt_perror(clnt, "rpc_destroy_1 call failed");
     } else {
