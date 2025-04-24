@@ -4,88 +4,91 @@
  * as a guideline for developing your own functions.
  */
 
-#include "claves_rpc.h"
+ #include "claves_rpc.h"
 
-bool_t
-destroy_1_svc(int *result, struct svc_req *rqstp)
-{
-	bool_t retval;
-
-	/*
-	 * insert server code here
-	 */
-
-	return retval;
-}
-
-bool_t
-set_value_1_svc(struct arg_send_values a1, int *result,  struct svc_req *rqstp)
-{
-	bool_t retval;
-
-	/*
-	 * insert server code here
-	 */
-
-	return retval;
-}
-
-bool_t
-get_value_1_svc(int key, struct ret_get_value *result,  struct svc_req *rqstp)
-{
-	bool_t retval;
-
-	/*
-	 * insert server code here
-	 */
-
-	return retval;
-}
-
-bool_t
-modify_value_1_svc(struct arg_send_values a2, int *result,  struct svc_req *rqstp)
-{
-	bool_t retval;
-
-	/*
-	 * insert server code here
-	 */
-
-	return retval;
-}
-
-bool_t
-delete_key_1_svc(int key, int *result,  struct svc_req *rqstp)
-{
-	bool_t retval;
-
-	/*
-	 * insert server code here
-	 */
-
-	return retval;
-}
-
-bool_t
-exist_1_svc(int key, int *result,  struct svc_req *rqstp)
-{
-	bool_t retval;
-
-	/*
-	 * insert server code here
-	 */
-
-	return retval;
-}
-
-int
-clavesrpc_1_freeresult (SVCXPRT *transp, xdrproc_t xdr_result, caddr_t result)
-{
-	xdr_free (xdr_result, result);
-
-	/*
-	 * Insert additional freeing code here, if needed
-	 */
-
-	return 1;
-}
+ bool_t destroy_1_svc(int *result, struct svc_req *rqstp)
+ {
+	 bool_t retval = true;
+	 
+	 *result = destroy();
+	 return retval;
+ }
+ 
+ bool_t set_value_1_svc(struct arg_send_values a1, int *result,  struct svc_req *rqstp)
+ {
+	 bool_t retval = true;
+ 
+	 // espera (key, value1, N_value2, V_value2, value3)
+	 *result = set_value(
+		 a1.key,
+		 a1.value1,
+		 a1.N_value2,
+		 a1.V_value2.V_value2_val,
+		 a1.value3
+	 );
+ 
+	 return retval;
+ }
+ 
+ bool_t get_value_1_svc(int key, struct ret_get_value *result,  struct svc_req *rqstp)
+ {
+	 bool_t retval = true;
+ 
+	 // Reservamos espacio para value1
+	 result->value1 = malloc(256);
+	 if (result->value1 == NULL) {
+		 result->status = -1;
+		 return retval;
+	 }
+ 
+	 result->status = get_value(
+		 key,
+		 result->value1,
+		 &result->N_value2,
+		 result->V_value2.V_value2_val,  // Esto debería venir de malloc pero RPC lo gestiona
+		 &result->value3
+	 );
+ 
+	 // Indicamos longitud real del vector
+	 result->V_value2.V_value2_len = result->N_value2;
+ 
+	 return retval;
+ }
+ 
+ bool_t modify_value_1_svc(struct arg_send_values a2, int *result,  struct svc_req *rqstp)
+ {
+	 bool_t retval = true;
+ 
+	 *result = modify_value(
+		 a2.key,
+		 a2.value1,
+		 a2.N_value2,
+		 a2.V_value2.V_value2_val,
+		 a2.value3
+	 );
+ 
+	 return retval;
+ }
+ 
+ bool_t delete_key_1_svc(int key, int *result,  struct svc_req *rqstp)
+ {
+	 bool_t retval = true;
+ 
+	 *result = delete_key(key);
+	 return retval;
+ }
+ 
+ bool_t exist_1_svc(int key, int *result,  struct svc_req *rqstp)
+ {
+	 bool_t retval = true;
+ 
+	 *result = exist(key);
+	 return retval;
+ }
+ 
+ int clavesrpc_1_freeresult (SVCXPRT *transp, xdrproc_t xdr_result, caddr_t result)
+ {
+	 xdr_free (xdr_result, result);
+	 return 1;
+	 
+ } 
