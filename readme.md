@@ -5,5 +5,9 @@ make -f Makefile.claves_rpc
 make -f Makefile.claves_rpc clean
 
 
-## para que rpc genere funciones mas modernas y claras
+## para que rpc genere funciones mas modernas y claras (con el flag -C, importante)
 rpcgen -C claves_rpc.x
+
+
+## por si acaso, para borrar todos los archivos definitivos
+rm -f claves_rpc_clnt.c claves_rpc_svc.c claves_rpc_xdr.c claves_rpc.h
