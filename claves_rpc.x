@@ -19,13 +19,13 @@ struct arg_send_values{
    struct Coord value3;
 };
 
-program CLAVESRPC{
-   version CLAVESRPC{
-      int rpc_destroy(void)=1;
-      int rpc_set_value(struct arg_send_values a1)=2;
-      struct ret_get_value rpc_get_value(int key)=3;
-      int rpc_modify_value(struct arg_send_values a2)=4;
-      int rpc_delete_key(int key)=5;
-      int rpc_exist(int key)=6;
-   }=1;
-}=100456709;
+program CLAVESRPC {
+   version CLAVESRPC {
+       int rpc_destroy(void) = 1;
+       int rpc_set_value(arg_send_values) = 2;
+       ret_get_value rpc_get_value(int) = 3;
+       int rpc_modify_value(arg_send_values) = 4;
+       int rpc_delete_key(int) = 5;
+       int rpc_exist(int) = 6;
+   } = 1;
+} = 100456709;
