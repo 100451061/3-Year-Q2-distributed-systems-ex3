@@ -5,6 +5,12 @@
  */
 
  #include "claves_rpc.h"
+ #include <stdbool.h> // para los bool
+ #include <stdlib.h> // para malloc
+ #include <string.h> // para strlen
+ #include <stdio.h> // para printf
+ 
+
 
  bool_t destroy_1_svc(int *result, struct svc_req *rqstp)
  {
