@@ -1,22 +1,22 @@
 struct Coord {
-   int x ;
-   int y ;
-} ;
+   int x;
+   int y;
+};
 
-struct ret_get_value{
+struct ret_get_value {
    int status;
    string value1<256>;
    int N_value2;
    double V_value2<32>;
-   struct Coord value3;
+   Coord value3;
 };
 
-struct arg_send_values{
+struct arg_send_values {
    int key;
    string value1<256>;
-    int N_value2;
+   int N_value2;
    double V_value2<32>;
-   struct Coord value3;
+   Coord value3;
 };
 
 program CLAVESRPC {
