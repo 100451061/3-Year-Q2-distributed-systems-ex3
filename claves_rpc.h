@@ -46,7 +46,7 @@ struct arg_send_values {
 typedef struct arg_send_values arg_send_values;
 
 #define CLAVESRPC 100456709
-#define CLAVESRPC 1
+// #define CLAVESRPC 1
 
 #if defined(__STDC__) || defined(__cplusplus)
 #define destroy 1
