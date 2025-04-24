@@ -15,6 +15,7 @@
 #ifndef SIG_PF
 #define SIG_PF void(*)(int)
 #endif
+#include "claves.h"
 
 static void
 clavesrpc_1(struct svc_req *rqstp, register SVCXPRT *transp)
@@ -96,15 +97,15 @@ main (int argc, char **argv)
 {
 	register SVCXPRT *transp;
 
-	pmap_unset (CLAVESRPC, CLAVESRPC);
+	pmap_unset (CLAVESRPC, CLAVESVERS);
 
 	transp = svcudp_create(RPC_ANYSOCK);
 	if (transp == NULL) {
 		fprintf (stderr, "%s", "cannot create udp service.");
 		exit(1);
 	}
-	if (!svc_register(transp, CLAVESRPC, CLAVESRPC, clavesrpc_1, IPPROTO_UDP)) {
-		fprintf (stderr, "%s", "unable to register (CLAVESRPC, CLAVESRPC, udp).");
+	if (!svc_register(transp, CLAVESRPC, CLAVESVERS, clavesrpc_1, IPPROTO_UDP)) {
+		fprintf (stderr, "%s", "unable to register (CLAVESRPC, CLAVESVERS, udp).");
 		exit(1);
 	}
 
@@ -113,8 +114,8 @@ main (int argc, char **argv)
 		fprintf (stderr, "%s", "cannot create tcp service.");
 		exit(1);
 	}
-	if (!svc_register(transp, CLAVESRPC, CLAVESRPC, clavesrpc_1, IPPROTO_TCP)) {
-		fprintf (stderr, "%s", "unable to register (CLAVESRPC, CLAVESRPC, tcp).");
+	if (!svc_register(transp, CLAVESRPC, CLAVESVERS, clavesrpc_1, IPPROTO_TCP)) {
+		fprintf (stderr, "%s", "unable to register (CLAVESRPC, CLAVESVERS, tcp).");
 		exit(1);
 	}
 

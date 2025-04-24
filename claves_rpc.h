@@ -13,24 +13,7 @@
 extern "C" {
 #endif
 
-
-struct Coord {
-	int x;
-	int y;
-};
-typedef struct Coord Coord;
-
-struct ret_get_value {
-	int status;
-	char *value1;
-	int N_value2;
-	struct {
-		u_int V_value2_len;
-		double *V_value2_val;
-	} V_value2;
-	Coord value3;
-};
-typedef struct ret_get_value ret_get_value;
+#include "claves.h"
 
 struct arg_send_values {
 	int key;
@@ -40,12 +23,24 @@ struct arg_send_values {
 		u_int V_value2_len;
 		double *V_value2_val;
 	} V_value2;
-	Coord value3;
+	struct Coord value3;
 };
 typedef struct arg_send_values arg_send_values;
 
+struct ret_get_value {
+	int status;
+	char *value1;
+	int N_value2;
+	struct {
+		u_int V_value2_len;
+		double *V_value2_val;
+	} V_value2;
+	struct Coord value3;
+};
+typedef struct ret_get_value ret_get_value;
+
 #define CLAVESRPC 100456709
-// #define CLAVESRPC 1
+#define CLAVESVERS 1
 
 #if defined(__STDC__) || defined(__cplusplus)
 #define rpc_destroy 1
@@ -93,14 +88,12 @@ extern int clavesrpc_1_freeresult ();
 /* the xdr functions */
 
 #if defined(__STDC__) || defined(__cplusplus)
-extern  bool_t xdr_Coord (XDR *, Coord*);
-extern  bool_t xdr_ret_get_value (XDR *, ret_get_value*);
 extern  bool_t xdr_arg_send_values (XDR *, arg_send_values*);
+extern  bool_t xdr_ret_get_value (XDR *, ret_get_value*);
 
 #else /* K&R C */
-extern bool_t xdr_Coord ();
-extern bool_t xdr_ret_get_value ();
 extern bool_t xdr_arg_send_values ();
+extern bool_t xdr_ret_get_value ();
 
 #endif /* K&R C */
 

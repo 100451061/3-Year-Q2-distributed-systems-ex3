@@ -17,29 +17,53 @@
     return &result;
 }
 
-int * rpc_set_value_1_svc(arg_send_values *a1, struct svc_req *rqstp) {
+int *
+rpc_set_value_1_svc(arg_send_values *a1, struct svc_req *rqstp)
+{
     static int result;
-    result = set_value(a1->key, a1->value1, a1->N_value2, a1->V_value2.V_value2_val, a1->value3);
+    
+    // Asegúrate de que value3 se pasa como struct Coord
+    struct Coord value3;
+    value3.x = a1->value3.x;
+    value3.y = a1->value3.y;
+    // Eliminar la línea: value3.z = a1->value3.z;
+    
+    result = set_value(a1->key, a1->value1, a1->N_value2, a1->V_value2.V_value2_val, value3);
+    
     return &result;
 }
 
-ret_get_value * rpc_get_value_1_svc(int *key, struct svc_req *rqstp) {
+ret_get_value *
+rpc_get_value_1_svc(int *a1, struct svc_req *rqstp)
+{
     static ret_get_value result;
-    static char value1[256];
-    static double V_value2[32];
-
-    result.value1 = value1;
-    result.V_value2.V_value2_val = V_value2;
-
-    result.status = get_value(*key, result.value1, &result.N_value2, result.V_value2.V_value2_val, &result.value3);
-    result.V_value2.V_value2_len = result.N_value2;
-
+    
+    // Asegúrate de que value3 se pasa como struct Coord*
+    struct Coord value3;
+    
+    result.status = get_value(*a1, result.value1, &result.N_value2, result.V_value2.V_value2_val, &value3);
+    
+    // Copia los valores de value3 a result.value3
+    result.value3.x = value3.x;
+    result.value3.y = value3.y;
+    // Eliminar la línea: result.value3.z = value3.z;
+    
     return &result;
 }
 
-int * rpc_modify_value_1_svc(arg_send_values *a2, struct svc_req *rqstp) {
+int *
+rpc_modify_value_1_svc(arg_send_values *a2, struct svc_req *rqstp)
+{
     static int result;
-    result = modify_value(a2->key, a2->value1, a2->N_value2, a2->V_value2.V_value2_val, a2->value3);
+    
+    // Asegúrate de que value3 se pasa como struct Coord
+    struct Coord value3;
+    value3.x = a2->value3.x;
+    value3.y = a2->value3.y;
+    // Eliminar la línea: value3.z = a2->value3.z;
+    
+    result = modify_value(a2->key, a2->value1, a2->N_value2, a2->V_value2.V_value2_val, value3);
+    
     return &result;
 }
 

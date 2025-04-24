@@ -4,25 +4,14 @@
  */
 
 #include "claves_rpc.h"
+#include "claves.h"
 
 bool_t
-xdr_Coord (XDR *xdrs, Coord *objp)
+xdr_arg_send_values (XDR *xdrs, arg_send_values *objp)
 {
 	register int32_t *buf;
 
-	 if (!xdr_int (xdrs, &objp->x))
-		 return FALSE;
-	 if (!xdr_int (xdrs, &objp->y))
-		 return FALSE;
-	return TRUE;
-}
-
-bool_t
-xdr_ret_get_value (XDR *xdrs, ret_get_value *objp)
-{
-	register int32_t *buf;
-
-	 if (!xdr_int (xdrs, &objp->status))
+	 if (!xdr_int (xdrs, &objp->key))
 		 return FALSE;
 	 if (!xdr_string (xdrs, &objp->value1, 256))
 		 return FALSE;
@@ -37,11 +26,11 @@ xdr_ret_get_value (XDR *xdrs, ret_get_value *objp)
 }
 
 bool_t
-xdr_arg_send_values (XDR *xdrs, arg_send_values *objp)
+xdr_ret_get_value (XDR *xdrs, ret_get_value *objp)
 {
 	register int32_t *buf;
 
-	 if (!xdr_int (xdrs, &objp->key))
+	 if (!xdr_int (xdrs, &objp->status))
 		 return FALSE;
 	 if (!xdr_string (xdrs, &objp->value1, 256))
 		 return FALSE;
