@@ -8,7 +8,6 @@
 
 #include <rpc/rpc.h>
 
-#include <pthread.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -46,48 +45,48 @@ struct arg_send_values {
 typedef struct arg_send_values arg_send_values;
 
 #define CLAVESRPC 100456709
-// #define CLAVESRPC 1
+#define CLAVESRPC 1
 
 #if defined(__STDC__) || defined(__cplusplus)
-#define destroy 1
-extern  enum clnt_stat destroy_1(int *, CLIENT *);
-extern  bool_t destroy_1_svc(int *, struct svc_req *);
-#define set_value 2
-extern  enum clnt_stat set_value_1(struct arg_send_values , int *, CLIENT *);
-extern  bool_t set_value_1_svc(struct arg_send_values , int *, struct svc_req *);
-#define get_value 3
-extern  enum clnt_stat get_value_1(int , struct ret_get_value *, CLIENT *);
-extern  bool_t get_value_1_svc(int , struct ret_get_value *, struct svc_req *);
-#define modify_value 4
-extern  enum clnt_stat modify_value_1(struct arg_send_values , int *, CLIENT *);
-extern  bool_t modify_value_1_svc(struct arg_send_values , int *, struct svc_req *);
-#define delete_key 5
-extern  enum clnt_stat delete_key_1(int , int *, CLIENT *);
-extern  bool_t delete_key_1_svc(int , int *, struct svc_req *);
-#define exist 6
-extern  enum clnt_stat exist_1(int , int *, CLIENT *);
-extern  bool_t exist_1_svc(int , int *, struct svc_req *);
+#define rpc_destroy 1
+extern  int * rpc_destroy_1(void *, CLIENT *);
+extern  int * rpc_destroy_1_svc(void *, struct svc_req *);
+#define rpc_set_value 2
+extern  int * rpc_set_value_1(struct arg_send_values *, CLIENT *);
+extern  int * rpc_set_value_1_svc(struct arg_send_values *, struct svc_req *);
+#define rpc_get_value 3
+extern  struct ret_get_value * rpc_get_value_1(int *, CLIENT *);
+extern  struct ret_get_value * rpc_get_value_1_svc(int *, struct svc_req *);
+#define rpc_modify_value 4
+extern  int * rpc_modify_value_1(struct arg_send_values *, CLIENT *);
+extern  int * rpc_modify_value_1_svc(struct arg_send_values *, struct svc_req *);
+#define rpc_delete_key 5
+extern  int * rpc_delete_key_1(int *, CLIENT *);
+extern  int * rpc_delete_key_1_svc(int *, struct svc_req *);
+#define rpc_exist 6
+extern  int * rpc_exist_1(int *, CLIENT *);
+extern  int * rpc_exist_1_svc(int *, struct svc_req *);
 extern int clavesrpc_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
-#define destroy 1
-extern  enum clnt_stat destroy_1();
-extern  bool_t destroy_1_svc();
-#define set_value 2
-extern  enum clnt_stat set_value_1();
-extern  bool_t set_value_1_svc();
-#define get_value 3
-extern  enum clnt_stat get_value_1();
-extern  bool_t get_value_1_svc();
-#define modify_value 4
-extern  enum clnt_stat modify_value_1();
-extern  bool_t modify_value_1_svc();
-#define delete_key 5
-extern  enum clnt_stat delete_key_1();
-extern  bool_t delete_key_1_svc();
-#define exist 6
-extern  enum clnt_stat exist_1();
-extern  bool_t exist_1_svc();
+#define rpc_destroy 1
+extern  int * rpc_destroy_1();
+extern  int * rpc_destroy_1_svc();
+#define rpc_set_value 2
+extern  int * rpc_set_value_1();
+extern  int * rpc_set_value_1_svc();
+#define rpc_get_value 3
+extern  struct ret_get_value * rpc_get_value_1();
+extern  struct ret_get_value * rpc_get_value_1_svc();
+#define rpc_modify_value 4
+extern  int * rpc_modify_value_1();
+extern  int * rpc_modify_value_1_svc();
+#define rpc_delete_key 5
+extern  int * rpc_delete_key_1();
+extern  int * rpc_delete_key_1_svc();
+#define rpc_exist 6
+extern  int * rpc_exist_1();
+extern  int * rpc_exist_1_svc();
 extern int clavesrpc_1_freeresult ();
 #endif /* K&R C */
 

@@ -12,7 +12,7 @@
  
 
 
- bool_t destroy_1_svc(int *result, struct svc_req *rqstp)
+ bool_t rpc_destroy_1_svc(int *result, struct svc_req *rqstp)
  {
 	 bool_t retval = true;
 	 
@@ -20,7 +20,7 @@
 	 return retval;
  }
  
- bool_t set_value_1_svc(struct arg_send_values a1, int *result,  struct svc_req *rqstp)
+ bool_t rpc_set_value_1_svc(struct arg_send_values a1, int *result,  struct svc_req *rqstp)
  {
 	 bool_t retval = true;
  
@@ -36,7 +36,7 @@
 	 return retval;
  }
  
- bool_t get_value_1_svc(int key, struct ret_get_value *result,  struct svc_req *rqstp)
+ bool_t rpc_get_value_1_svc(int key, struct ret_get_value *result,  struct svc_req *rqstp)
  {
 	 bool_t retval = true;
  
@@ -61,7 +61,7 @@
 	 return retval;
  }
  
- bool_t modify_value_1_svc(struct arg_send_values a2, int *result,  struct svc_req *rqstp)
+ bool_t rpc_modify_value_1_svc(struct arg_send_values a2, int *result,  struct svc_req *rqstp)
  {
 	 bool_t retval = true;
  
@@ -76,7 +76,7 @@
 	 return retval;
  }
  
- bool_t delete_key_1_svc(int key, int *result,  struct svc_req *rqstp)
+ bool_t rpc_delete_key_1_svc(int key, int *result,  struct svc_req *rqstp)
  {
 	 bool_t retval = true;
  
@@ -84,7 +84,7 @@
 	 return retval;
  }
  
- bool_t exist_1_svc(int key, int *result,  struct svc_req *rqstp)
+ bool_t rpc_exist_1_svc(int key, int *result,  struct svc_req *rqstp)
  {
 	 bool_t retval = true;
  
