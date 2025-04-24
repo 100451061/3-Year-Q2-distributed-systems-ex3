@@ -4,6 +4,7 @@
  */
 
 #include "claves_rpc.h"
+#include <stdbool.h>
 
 bool_t
 xdr_Coord (XDR *xdrs, Coord *objp)

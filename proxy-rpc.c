@@ -5,6 +5,7 @@
  */
 
 #include "claves_rpc.h"
+#include <stdbool.h>
 
 
 void

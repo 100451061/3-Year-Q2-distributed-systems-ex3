@@ -5,6 +5,7 @@
 
 #include <memory.h> /* for memset */
 #include "claves_rpc.h"
+#include <stdbool.h>
 
 /* Default timeout can be changed using clnt_control() */
 static struct timeval TIMEOUT = { 25, 0 };
