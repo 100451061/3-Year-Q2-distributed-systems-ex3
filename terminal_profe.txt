@@ -1,0 +1,406 @@
+estre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-di
+stributed-systems-ex3$ r
+pcgen -N -M claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ make -f Makefile.claves_rpc
+cc -g -I/usr/include/tirpc -D_REENTRANT  -c -o claves_rpc_clnt.o claves_rpc_clnt.c
+cc -g -I/usr/include/tirpc -D_REENTRANT  -c -o proxy-rpc.o proxy-rpc.c
+proxy-rpc.c: In function ‘clavesrpc_1’:
+proxy-rpc.c:27:16: error: incompatible types when assigning to type ‘int *’ from type ‘enum clnt_stat’
+   27 |     result_1 = rpc_destroy_1(NULL, clnt);
+      |                ^~~~~~~~~~~~~
+proxy-rpc.c:45:32: error: incompatible type for argument 1 of ‘rpc_set_value_1’   
+   45 |     result_2 = rpc_set_value_1(&set_value_1_a1, clnt);
+      |                                ^~~~~~~~~~~~~~~
+      |                                |
+      |                                struct arg_send_values *
+In file included from proxy-rpc.c:1:
+claves_rpc.h:51:40: note: expected ‘arg_send_values’ but argument is of type ‘struct arg_send_values *’
+   51 | extern  enum clnt_stat rpc_set_value_1(arg_send_values , int *, CLIENT *);
+      |                                        ^~~~~~~~~~~~~~~
+proxy-rpc.c:45:49: warning: passing argument 2 of ‘rpc_set_value_1’ from incompatible pointer type [-Wincompatible-pointer-types]
+   45 |     result_2 = rpc_set_value_1(&set_value_1_a1, clnt);
+      |                                                 ^~~~
+      |                                                 |
+      |                                                 CLIENT * {aka struct __rpc_client *}
+In file included from proxy-rpc.c:1:
+claves_rpc.h:51:58: note: expected ‘int *’ but argument is of type ‘CLIENT *’ {aka ‘struct __rpc_client *’}
+   51 | extern  enum clnt_stat rpc_set_value_1(arg_send_values , int *, CLIENT *);
+      |                                                          ^~~~~
+proxy-rpc.c:45:16: error: too few arguments to function ‘rpc_set_value_1’
+   45 |     result_2 = rpc_set_value_1(&set_value_1_a1, clnt);
+      |                ^~~~~~~~~~~~~~~
+In file included from proxy-rpc.c:1:
+claves_rpc.h:51:24: note: declared here
+   51 | extern  enum clnt_stat rpc_set_value_1(arg_send_values , int *, CLIENT *);
+      |                        ^~~~~~~~~~~~~~~
+proxy-rpc.c:54:32: warning: passing argument 1 of ‘rpc_get_value_1’ makes integer from pointer without a cast [-Wint-conversion]
+   54 |     result_3 = rpc_get_value_1(&get_value_1_key, clnt);
+      |                                ^~~~~~~~~~~~~~~~
+      |                                |
+      |                                int *
+In file included from proxy-rpc.c:1:
+claves_rpc.h:54:40: note: expected ‘int’ but argument is of type ‘int *’
+   54 | extern  enum clnt_stat rpc_get_value_1(int , ret_get_value *, CLIENT *);  
+      |                                        ^~~
+proxy-rpc.c:54:50: warning: passing argument 2 of ‘rpc_get_value_1’ from incompatible pointer type [-Wincompatible-pointer-types]
+   54 |     result_3 = rpc_get_value_1(&get_value_1_key, clnt);
+      |                                                  ^~~~
+      |                                                  |
+      |                                                  CLIENT * {aka struct __rpc_client *}
+In file included from proxy-rpc.c:1:
+claves_rpc.h:54:46: note: expected ‘ret_get_value *’ but argument is of type ‘CLIENT *’ {aka ‘struct __rpc_client *’}
+   54 | extern  enum clnt_stat rpc_get_value_1(int , ret_get_value *, CLIENT *);  
+      |                                              ^~~~~~~~~~~~~~~
+proxy-rpc.c:54:16: error: too few arguments to function ‘rpc_get_value_1’
+   54 |     result_3 = rpc_get_value_1(&get_value_1_key, clnt);
+      |                ^~~~~~~~~~~~~~~
+In file included from proxy-rpc.c:1:
+claves_rpc.h:54:24: note: declared here
+   54 | extern  enum clnt_stat rpc_get_value_1(int , ret_get_value *, CLIENT *);  
+      |                        ^~~~~~~~~~~~~~~
+proxy-rpc.c:73:35: error: incompatible type for argument 1 of ‘rpc_modify_value_1’
+   73 |     result_4 = rpc_modify_value_1(&modify_value_1_a2, clnt);
+      |                                   ^~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   struct arg_send_values *
+In file included from proxy-rpc.c:1:
+claves_rpc.h:57:43: note: expected ‘arg_send_values’ but argument is of type ‘struct arg_send_values *’
+   57 | extern  enum clnt_stat rpc_modify_value_1(arg_send_values , int *, CLIENT *);
+      |                                           ^~~~~~~~~~~~~~~
+proxy-rpc.c:73:55: warning: passing argument 2 of ‘rpc_modify_value_1’ from incompatible pointer type [-Wincompatible-pointer-types]
+   73 |     result_4 = rpc_modify_value_1(&modify_value_1_a2, clnt);
+      |                                                       ^~~~
+      |                                                       |
+      |                                                       CLIENT * {aka struct __rpc_client *}
+In file included from proxy-rpc.c:1:
+claves_rpc.h:57:61: note: expected ‘int *’ but argument is of type ‘CLIENT *’ {aka ‘struct __rpc_client *’}
+   57 | extern  enum clnt_stat rpc_modify_value_1(arg_send_values , int *, CLIENT *);
+      |                                                             ^~~~~
+proxy-rpc.c:73:16: error: too few arguments to function ‘rpc_modify_value_1’      
+   73 |     result_4 = rpc_modify_value_1(&modify_value_1_a2, clnt);
+      |                ^~~~~~~~~~~~~~~~~~
+In file included from proxy-rpc.c:1:
+claves_rpc.h:57:24: note: declared here
+   57 | extern  enum clnt_stat rpc_modify_value_1(arg_send_values , int *, CLIENT *);
+      |                        ^~~~~~~~~~~~~~~~~~
+proxy-rpc.c:82:33: warning: passing argument 1 of ‘rpc_delete_key_1’ makes integer from pointer without a cast [-Wint-conversion]
+   82 |     result_5 = rpc_delete_key_1(&delete_key_1_key, clnt);
+      |                                 ^~~~~~~~~~~~~~~~~
+      |                                 |
+      |                                 int *
+In file included from proxy-rpc.c:1:
+claves_rpc.h:60:41: note: expected ‘int’ but argument is of type ‘int *’
+   60 | extern  enum clnt_stat rpc_delete_key_1(int , int *, CLIENT *);
+      |                                         ^~~
+proxy-rpc.c:82:52: warning: passing argument 2 of ‘rpc_delete_key_1’ from incompatible pointer type [-Wincompatible-pointer-types]
+   82 |     result_5 = rpc_delete_key_1(&delete_key_1_key, clnt);
+      |                                                    ^~~~
+      |                                                    |
+      |                                                    CLIENT * {aka struct __rpc_client *}
+In file included from proxy-rpc.c:1:
+claves_rpc.h:60:47: note: expected ‘int *’ but argument is of type ‘CLIENT *’ {aka ‘struct __rpc_client *’}
+   60 | extern  enum clnt_stat rpc_delete_key_1(int , int *, CLIENT *);
+      |                                               ^~~~~
+proxy-rpc.c:82:16: error: too few arguments to function ‘rpc_delete_key_1’        
+   82 |     result_5 = rpc_delete_key_1(&delete_key_1_key, clnt);
+      |                ^~~~~~~~~~~~~~~~
+In file included from proxy-rpc.c:1:
+claves_rpc.h:60:24: note: declared here
+   60 | extern  enum clnt_stat rpc_delete_key_1(int , int *, CLIENT *);
+      |                        ^~~~~~~~~~~~~~~~
+proxy-rpc.c:91:28: warning: passing argument 1 of ‘rpc_exist_1’ makes integer from pointer without a cast [-Wint-conversion]
+   91 |     result_6 = rpc_exist_1(&exist_1_key, clnt);
+      |                            ^~~~~~~~~~~~
+      |                            |
+      |                            int *
+In file included from proxy-rpc.c:1:
+claves_rpc.h:63:36: note: expected ‘int’ but argument is of type ‘int *’
+   63 | extern  enum clnt_stat rpc_exist_1(int , int *, CLIENT *);
+      |                                    ^~~
+proxy-rpc.c:91:42: warning: passing argument 2 of ‘rpc_exist_1’ from incompatible pointer type [-Wincompatible-pointer-types]
+   91 |     result_6 = rpc_exist_1(&exist_1_key, clnt);
+      |                                          ^~~~
+      |                                          |
+      |                                          CLIENT * {aka struct __rpc_client *}
+In file included from proxy-rpc.c:1:
+claves_rpc.h:63:42: note: expected ‘int *’ but argument is of type ‘CLIENT *’ {aka ‘struct __rpc_client *’}
+   63 | extern  enum clnt_stat rpc_exist_1(int , int *, CLIENT *);
+      |                                          ^~~~~
+proxy-rpc.c:91:16: error: too few arguments to function ‘rpc_exist_1’
+   91 |     result_6 = rpc_exist_1(&exist_1_key, clnt);
+      |                ^~~~~~~~~~~
+In file included from proxy-rpc.c:1:
+claves_rpc.h:63:24: note: declared here
+   63 | extern  enum clnt_stat rpc_exist_1(int , int *, CLIENT *);
+      |                        ^~~~~~~~~~~
+make: *** [<builtin>: proxy-rpc.o] Error 1
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrim      |                      ^~~~~
+proxy-rpc.c:91:16: error: too few arguments to function ‘rpc_exist_1’
+   91 |     result_6 = rpc_exist_1(&exist_1_key, clnt);
+      |                ^~~~~~~~~~~
+In file included from proxy-rpc.c:1:
+claves_rpc.h:63:24: note: declared here
+   63 | extern  enum clnt_stat rpc_exist_1(int , int *, CLIENT *);
+      |                        ^~~~~~~~~~~
+make: *** [<builtin>: proxy-rpc.o] Error 1
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ rpcgen -N -M claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ ls -l
+total 324
+-rwxrwxrwx 1 paul paul 244795 Apr 21 21:04 'Enunciado - Ejercicio3.pdf'
+-rwxrwxrwx 1 paul paul  11558 Apr 12 15:58  LICENSE
+-rwxrwxrwx 1 paul paul    759 Apr 25 09:48  Makefile
+-rwxrwxrwx 1 paul paul   1606 Apr 25 10:15  Makefile.claves_rpc
+-rwxrwxrwx 1 paul paul   3693 Apr 25 09:56  claves.c
+-rwxrwxrwx 1 paul paul   4309 Apr 24 18:16  claves.h
+-rwxrwxrwx 1 paul paul   2853 Apr 25 10:24  claves_rpc.h
+-rwxrwxrwx 1 paul paul    906 Apr 25 10:21  claves_rpc.x
+-rwxrwxrwx 1 paul paul   1590 Apr 25 10:24  claves_rpc_clnt.c
+-rwxrwxrwx 1 paul paul  15624 Apr 25 10:23  claves_rpc_clnt.o
+-rwxrwxrwx 1 paul paul   4413 Apr 25 10:24  claves_rpc_svc.c
+-rwxrwxrwx 1 paul paul   1124 Apr 25 10:24  claves_rpc_xdr.c
+-rwxrwxrwx 1 paul paul   3254 Apr 25 10:23  proxy-rpc.c
+-rwxrwxrwx 1 paul paul    879 Apr 25 10:22  readme.md
+-rwxrwxrwx 1 paul paul   2322 Apr 25 09:52  server-rpc.c
+-rwxrwxrwx 1 paul paul    228 Apr 24 18:31  xdr_coord.c
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ vi claves_rpc-h
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ vi claves_rpc.h
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ ls -l
+total 324
+-rwxrwxrwx 1 paul paul 244795 Apr 21 21:04 'Enunciado - Ejercicio3.pdf'
+-rwxrwxrwx 1 paul paul  11558 Apr 12 15:58  LICENSE
+-rwxrwxrwx 1 paul paul    759 Apr 25 09:48  Makefile
+-rwxrwxrwx 1 paul paul   1606 Apr 25 10:15  Makefile.claves_rpc
+-rwxrwxrwx 1 paul paul   3693 Apr 25 09:56  claves.c
+-rwxrwxrwx 1 paul paul   4309 Apr 24 18:16  claves.h
+-rwxrwxrwx 1 paul paul   2853 Apr 25 10:24  claves_rpc.h
+-rwxrwxrwx 1 paul paul    906 Apr 25 10:21  claves_rpc.x
+-rwxrwxrwx 1 paul paul   1590 Apr 25 10:24  claves_rpc_clnt.c
+-rwxrwxrwx 1 paul paul  15624 Apr 25 10:23  claves_rpc_clnt.o
+-rwxrwxrwx 1 paul paul   4413 Apr 25 10:24  claves_rpc_svc.c
+-rwxrwxrwx 1 paul paul   1124 Apr 25 10:24  claves_rpc_xdr.c
+-rwxrwxrwx 1 paul paul   3254 Apr 25 10:23  proxy-rpc.c
+-rwxrwxrwx 1 paul paul    879 Apr 25 10:22  readme.md
+-rwxrwxrwx 1 paul paul   2322 Apr 25 09:52  server-rpc.c
+-rwxrwxrwx 1 paul paul    228 Apr 24 18:31  xdr_coord.c
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ mkdir prueba
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ cp *.x prueba/
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ cd prueba/
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ ls
+claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ ls -l
+total 4
+-rwxrwxrwx 1 paul paul 906 Apr 25 10:25 claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ !rp
+rpcgen -N -M claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ ls
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ vi claves_rpc.h
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ vi claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ !rpc
+rpcgen -N -M claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ vi *.h
+estre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-di
+stributed-systems-ex3$ r
+pcgen -N -M claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ make -f Makefile.claves_rpc
+cc -g -I/usr/include/tirpc -D_REENTRANT  -c -o claves_rpc_clnt.o claves_rpc_clnt.c
+cc -g -I/usr/include/tirpc -D_REENTRANT  -c -o proxy-rpc.o proxy-rpc.c
+proxy-rpc.c: In function ‘clavesrpc_1’:
+proxy-rpc.c:27:16: error: incompatible types when assigning to type ‘int *’ from type ‘enum clnt_stat’
+   27 |     result_1 = rpc_destroy_1(NULL, clnt);
+      |                ^~~~~~~~~~~~~
+proxy-rpc.c:45:32: error: incompatible type for argument 1 of ‘rpc_set_value_1’   
+   45 |     result_2 = rpc_set_value_1(&set_value_1_a1, clnt);
+      |                                ^~~~~~~~~~~~~~~
+      |                                |
+      |                                struct arg_send_values *
+In file included from proxy-rpc.c:1:
+claves_rpc.h:51:40: note: expected ‘arg_send_values’ but argument is of type ‘struct arg_send_values *’
+   51 | extern  enum clnt_stat rpc_set_value_1(arg_send_values , int *, CLIENT *);
+      |                                        ^~~~~~~~~~~~~~~
+proxy-rpc.c:45:49: warning: passing argument 2 of ‘rpc_set_value_1’ from incompatible pointer type [-Wincompatible-pointer-types]
+   45 |     result_2 = rpc_set_value_1(&set_value_1_a1, clnt);
+      |                                                 ^~~~
+      |                                                 |
+      |                                                 CLIENT * {aka struct __rpc_client *}
+In file included from proxy-rpc.c:1:
+claves_rpc.h:51:58: note: expected ‘int *’ but argument is of type ‘CLIENT *’ {aka ‘struct __rpc_client *’}
+   51 | extern  enum clnt_stat rpc_set_value_1(arg_send_values , int *, CLIENT *);
+      |                                                          ^~~~~
+proxy-rpc.c:45:16: error: too few arguments to function ‘rpc_set_value_1’
+   45 |     result_2 = rpc_set_value_1(&set_value_1_a1, clnt);
+      |                ^~~~~~~~~~~~~~~
+In file included from proxy-rpc.c:1:
+claves_rpc.h:51:24: note: declared here
+   51 | extern  enum clnt_stat rpc_set_value_1(arg_send_values , int *, CLIENT *);
+      |                        ^~~~~~~~~~~~~~~
+proxy-rpc.c:54:32: warning: passing argument 1 of ‘rpc_get_value_1’ makes integer from pointer without a cast [-Wint-conversion]
+   54 |     result_3 = rpc_get_value_1(&get_value_1_key, clnt);
+      |                                ^~~~~~~~~~~~~~~~
+      |                                |
+      |                                int *
+In file included from proxy-rpc.c:1:
+claves_rpc.h:54:40: note: expected ‘int’ but argument is of type ‘int *’
+   54 | extern  enum clnt_stat rpc_get_value_1(int , ret_get_value *, CLIENT *);  
+      |                                        ^~~
+proxy-rpc.c:54:50: warning: passing argument 2 of ‘rpc_get_value_1’ from incompatible pointer type [-Wincompatible-pointer-types]
+   54 |     result_3 = rpc_get_value_1(&get_value_1_key, clnt);
+      |                                                  ^~~~
+      |                                                  |
+      |                                                  CLIENT * {aka struct __rpc_client *}
+In file included from proxy-rpc.c:1:
+claves_rpc.h:54:46: note: expected ‘ret_get_value *’ but argument is of type ‘CLIENT *’ {aka ‘struct __rpc_client *’}
+   54 | extern  enum clnt_stat rpc_get_value_1(int , ret_get_value *, CLIENT *);  
+      |                                              ^~~~~~~~~~~~~~~
+proxy-rpc.c:54:16: error: too few arguments to function ‘rpc_get_value_1’
+   54 |     result_3 = rpc_get_value_1(&get_value_1_key, clnt);
+      |                ^~~~~~~~~~~~~~~
+In file included from proxy-rpc.c:1:
+claves_rpc.h:54:24: note: declared here
+   54 | extern  enum clnt_stat rpc_get_value_1(int , ret_get_value *, CLIENT *);  
+      |                        ^~~~~~~~~~~~~~~
+proxy-rpc.c:73:35: error: incompatible type for argument 1 of ‘rpc_modify_value_1’
+   73 |     result_4 = rpc_modify_value_1(&modify_value_1_a2, clnt);
+      |                                   ^~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   struct arg_send_values *
+In file included from proxy-rpc.c:1:
+claves_rpc.h:57:43: note: expected ‘arg_send_values’ but argument is of type ‘struct arg_send_values *’
+   57 | extern  enum clnt_stat rpc_modify_value_1(arg_send_values , int *, CLIENT *);
+      |                                           ^~~~~~~~~~~~~~~
+proxy-rpc.c:73:55: warning: passing argument 2 of ‘rpc_modify_value_1’ from incompatible pointer type [-Wincompatible-pointer-types]
+   73 |     result_4 = rpc_modify_value_1(&modify_value_1_a2, clnt);
+      |                                                       ^~~~
+      |                                                       |
+      |                                                       CLIENT * {aka struct __rpc_client *}
+In file included from proxy-rpc.c:1:
+claves_rpc.h:57:61: note: expected ‘int *’ but argument is of type ‘CLIENT *’ {aka ‘struct __rpc_client *’}
+   57 | extern  enum clnt_stat rpc_modify_value_1(arg_send_values , int *, CLIENT *);
+      |                                                             ^~~~~
+proxy-rpc.c:73:16: error: too few arguments to function ‘rpc_modify_value_1’      
+   73 |     result_4 = rpc_modify_value_1(&modify_value_1_a2, clnt);
+      |                ^~~~~~~~~~~~~~~~~~
+In file included from proxy-rpc.c:1:
+claves_rpc.h:57:24: note: declared here
+   57 | extern  enum clnt_stat rpc_modify_value_1(arg_send_values , int *, CLIENT *);
+      |                        ^~~~~~~~~~~~~~~~~~
+proxy-rpc.c:82:33: warning: passing argument 1 of ‘rpc_delete_key_1’ makes integer from pointer without a cast [-Wint-conversion]
+   82 |     result_5 = rpc_delete_key_1(&delete_key_1_key, clnt);
+      |                                 ^~~~~~~~~~~~~~~~~
+      |                                 |
+      |                                 int *
+In file included from proxy-rpc.c:1:
+claves_rpc.h:60:41: note: expected ‘int’ but argument is of type ‘int *’
+   60 | extern  enum clnt_stat rpc_delete_key_1(int , int *, CLIENT *);
+      |                                         ^~~
+proxy-rpc.c:82:52: warning: passing argument 2 of ‘rpc_delete_key_1’ from incompatible pointer type [-Wincompatible-pointer-types]
+   82 |     result_5 = rpc_delete_key_1(&delete_key_1_key, clnt);
+      |                                                    ^~~~
+      |                                                    |
+      |                                                    CLIENT * {aka struct __rpc_client *}
+In file included from proxy-rpc.c:1:
+claves_rpc.h:60:47: note: expected ‘int *’ but argument is of type ‘CLIENT *’ {aka ‘struct __rpc_client *’}
+   60 | extern  enum clnt_stat rpc_delete_key_1(int , int *, CLIENT *);
+      |                                               ^~~~~
+proxy-rpc.c:82:16: error: too few arguments to function ‘rpc_delete_key_1’        
+   82 |     result_5 = rpc_delete_key_1(&delete_key_1_key, clnt);
+      |                ^~~~~~~~~~~~~~~~
+In file included from proxy-rpc.c:1:
+claves_rpc.h:60:24: note: declared here
+   60 | extern  enum clnt_stat rpc_delete_key_1(int , int *, CLIENT *);
+      |                        ^~~~~~~~~~~~~~~~
+proxy-rpc.c:91:28: warning: passing argument 1 of ‘rpc_exist_1’ makes integer from pointer without a cast [-Wint-conversion]
+   91 |     result_6 = rpc_exist_1(&exist_1_key, clnt);
+      |                            ^~~~~~~~~~~~
+      |                            |
+      |                            int *
+In file included from proxy-rpc.c:1:
+claves_rpc.h:63:36: note: expected ‘int’ but argument is of type ‘int *’
+   63 | extern  enum clnt_stat rpc_exist_1(int , int *, CLIENT *);
+      |                                    ^~~
+proxy-rpc.c:91:42: warning: passing argument 2 of ‘rpc_exist_1’ from incompatible pointer type [-Wincompatible-pointer-types]
+   91 |     result_6 = rpc_exist_1(&exist_1_key, clnt);
+      |                                          ^~~~
+      |                                          |
+      |                                          CLIENT * {aka struct __rpc_client *}
+In file included from proxy-rpc.c:1:
+claves_rpc.h:63:42: note: expected ‘int *’ but argument is of type ‘CLIENT *’ {aka ‘struct __rpc_client *’}
+   63 | extern  enum clnt_stat rpc_exist_1(int , int *, CLIENT *);
+      |                                          ^~~~~
+proxy-rpc.c:91:16: error: too few arguments to function ‘rpc_exist_1’
+   91 |     result_6 = rpc_exist_1(&exist_1_key, clnt);
+      |                ^~~~~~~~~~~
+In file included from proxy-rpc.c:1:
+claves_rpc.h:63:24: note: declared here
+   63 | extern  enum clnt_stat rpc_exist_1(int , int *, CLIENT *);
+      |                        ^~~~~~~~~~~
+make: *** [<builtin>: proxy-rpc.o] Error 1
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrim      |                      ^~~~~
+proxy-rpc.c:91:16: error: too few arguments to function ‘rpc_exist_1’
+   91 |     result_6 = rpc_exist_1(&exist_1_key, clnt);
+      |                ^~~~~~~~~~~
+In file included from proxy-rpc.c:1:
+claves_rpc.h:63:24: note: declared here
+   63 | extern  enum clnt_stat rpc_exist_1(int , int *, CLIENT *);
+      |                        ^~~~~~~~~~~
+make: *** [<builtin>: proxy-rpc.o] Error 1
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ rpcgen -N -M claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ ls -l
+total 324
+-rwxrwxrwx 1 paul paul 244795 Apr 21 21:04 'Enunciado - Ejercicio3.pdf'
+-rwxrwxrwx 1 paul paul  11558 Apr 12 15:58  LICENSE
+-rwxrwxrwx 1 paul paul    759 Apr 25 09:48  Makefile
+-rwxrwxrwx 1 paul paul   1606 Apr 25 10:15  Makefile.claves_rpc
+-rwxrwxrwx 1 paul paul   3693 Apr 25 09:56  claves.c
+-rwxrwxrwx 1 paul paul   4309 Apr 24 18:16  claves.h
+-rwxrwxrwx 1 paul paul   2853 Apr 25 10:24  claves_rpc.h
+-rwxrwxrwx 1 paul paul    906 Apr 25 10:21  claves_rpc.x
+-rwxrwxrwx 1 paul paul   1590 Apr 25 10:24  claves_rpc_clnt.c
+-rwxrwxrwx 1 paul paul  15624 Apr 25 10:23  claves_rpc_clnt.o
+-rwxrwxrwx 1 paul paul   4413 Apr 25 10:24  claves_rpc_svc.c
+-rwxrwxrwx 1 paul paul   1124 Apr 25 10:24  claves_rpc_xdr.c
+-rwxrwxrwx 1 paul paul   3254 Apr 25 10:23  proxy-rpc.c
+-rwxrwxrwx 1 paul paul    879 Apr 25 10:22  readme.md
+-rwxrwxrwx 1 paul paul   2322 Apr 25 09:52  server-rpc.c
+-rwxrwxrwx 1 paul paul    228 Apr 24 18:31  xdr_coord.c
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ vi claves_rpc-h
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ vi claves_rpc.h
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ ls -l
+total 324
+-rwxrwxrwx 1 paul paul 244795 Apr 21 21:04 'Enunciado - Ejercicio3.pdf'
+-rwxrwxrwx 1 paul paul  11558 Apr 12 15:58  LICENSE
+-rwxrwxrwx 1 paul paul    759 Apr 25 09:48  Makefile
+-rwxrwxrwx 1 paul paul   1606 Apr 25 10:15  Makefile.claves_rpc
+-rwxrwxrwx 1 paul paul   3693 Apr 25 09:56  claves.c
+-rwxrwxrwx 1 paul paul   4309 Apr 24 18:16  claves.h
+-rwxrwxrwx 1 paul paul   2853 Apr 25 10:24  claves_rpc.h
+-rwxrwxrwx 1 paul paul    906 Apr 25 10:21  claves_rpc.x
+-rwxrwxrwx 1 paul paul   1590 Apr 25 10:24  claves_rpc_clnt.c
+-rwxrwxrwx 1 paul paul  15624 Apr 25 10:23  claves_rpc_clnt.o
+-rwxrwxrwx 1 paul paul   4413 Apr 25 10:24  claves_rpc_svc.c
+-rwxrwxrwx 1 paul paul   1124 Apr 25 10:24  claves_rpc_xdr.c
+-rwxrwxrwx 1 paul paul   3254 Apr 25 10:23  proxy-rpc.c
+-rwxrwxrwx 1 paul paul    879 Apr 25 10:22  readme.md
+-rwxrwxrwx 1 paul paul   2322 Apr 25 09:52  server-rpc.c
+-rwxrwxrwx 1 paul paul    228 Apr 24 18:31  xdr_coord.c
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ mkdir prueba
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ cp *.x prueba/
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3$ cd prueba/
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ ls
+claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ ls -l
+total 4
+-rwxrwxrwx 1 paul paul 906 Apr 25 10:25 claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ !rp
+rpcgen -N -M claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ ls
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ vi claves_rpc.h
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ vi claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ !rpc
+rpcgen -N -M claves_rpc.x
+paul@Pablo:/mnt/c/Users/ferra/Documents/Universidad/Tercero de Carrera/2do cuatrimestre/sistemas_distribuidos/ejercicio_evaluable3/3-Year-Q2-distributed-systems-ex3/prueba$ vi *.h
