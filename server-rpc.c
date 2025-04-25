@@ -4,10 +4,13 @@
  * as a guideline for developing your own functions.
  */
 
+ #include <pthread.h>
  #include <stdbool.h>      // Para usar 'true'
  #include "claves.h"       // Tus funciones reales: destroy, set_value, etc.
  #include "claves_rpc.h"   // Header generado por rpcgen
  
+ // Mutex para proteger las operaciones
+ static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
  
 
 
@@ -22,13 +25,15 @@ rpc_set_value_1_svc(arg_send_values *a1, struct svc_req *rqstp)
 {
     static int result;
     
-    // Asegúrate de que value3 se pasa como struct Coord
+    pthread_mutex_lock(&mutex);
+    
     struct Coord value3;
     value3.x = a1->value3.x;
     value3.y = a1->value3.y;
-    // Eliminar la línea: value3.z = a1->value3.z;
     
     result = set_value(a1->key, a1->value1, a1->N_value2, a1->V_value2.V_value2_val, value3);
+    
+    pthread_mutex_unlock(&mutex);
     
     return &result;
 }
