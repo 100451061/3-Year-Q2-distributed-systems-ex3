@@ -30,7 +30,7 @@ struct ret_get_value {
 /* Definición del programa RPC */
 program CLAVESRPC {
     version CLAVESVERS {
-        int rpc_destroy() = 1;
+        int rpc_destroy(void) = 1;
         int rpc_set_value(arg_send_values) = 2;
         ret_get_value rpc_get_value(int) = 3;
         int rpc_modify_value(arg_send_values) = 4;

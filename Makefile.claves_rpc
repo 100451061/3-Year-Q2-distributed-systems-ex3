@@ -42,10 +42,10 @@ xdr_coord.o: xdr_coord.c
 claves.o: claves.c claves.h
 	$(CC) $(CFLAGS) -c -o claves.o claves.c
 
-claves_rpc_client: claves_rpc_clnt.o proxy-rpc.o claves_rpc_xdr.o xdr_coord.o
+claves_rpc_client: claves_rpc_clnt.o proxy-rpc.o claves_rpc_xdr.o xdr_coord.o claves_rpc.h
 	$(CC) $(CFLAGS) -o claves_rpc_client claves_rpc_clnt.o proxy-rpc.o claves_rpc_xdr.o xdr_coord.o $(LDLIBS)
 
-claves_rpc_server: claves_rpc_svc.o server-rpc.o claves_rpc_xdr.o xdr_coord.o claves.o
+claves_rpc_server: claves_rpc_svc.o server-rpc.o claves_rpc_xdr.o xdr_coord.o claves.o claves_rpc.h
 	$(CC) $(CFLAGS) -o claves_rpc_server claves_rpc_svc.o server-rpc.o claves_rpc_xdr.o xdr_coord.o claves.o $(LDLIBS)
 
 clean:
